@@ -5,19 +5,17 @@ const uploadValidation = require("../app/controllers/upload/validation")
 const apiRouter = express.Router()
 
 // superadmin and admin action
-apiRouter.get("/api/user/all", controllers.api.v1.userController.whoIsLogin, controllers.api.v1.userController.list)
-apiRouter.get("/api/user/detail/:id", controllers.api.v1.userController.whoIsLogin, controllers.api.v1.userController.detail)
+apiRouter.get("/api/admin/all", controllers.api.v1.userController.whoIsLogin, controllers.api.v1.adminController.list)
+apiRouter.get("/api/admin/detail/:id", controllers.api.v1.userController.whoIsLogin, controllers.api.v1.adminController.detail)
 
 // superadmin action
-apiRouter.put("/api/user/update/:id", controllers.api.v1.userController.whoIsLogin, controllers.api.v1.userController.update)
-apiRouter.delete("/api/user/delete/:id", controllers.api.v1.userController.whoIsLogin, controllers.api.v1.userController.destroy)
-
-
-// register for add data admin, privilage only for superadmin role
-apiRouter.post("/api/admin/register", controllers.api.v1.userController.whoIsLogin, uploadValidation, controllers.api.v1.userController.register)
+apiRouter.put("/api/admin/update/:id", uploadValidation, controllers.api.v1.userController.whoIsLogin, controllers.api.v1.adminController.update)
+apiRouter.delete("/api/admin/delete/:id", controllers.api.v1.userController.whoIsLogin, controllers.api.v1.adminController.destroy)
+apiRouter.post("/api/admin/register", uploadValidation, controllers.api.v1.userController.whoIsLogin, uploadValidation, controllers.api.v1.userController.register)
 
 // user action
 apiRouter.get("/api/user/current", controllers.api.v1.userController.whoIsLogin, controllers.api.v1.userController.currentUser)
+apiRouter.get("/api/user/update", uploadValidation, controllers.api.v1.userController.whoIsLogin, controllers.api.v1.userController.update)
 apiRouter.post("/api/user/register", uploadValidation, controllers.api.v1.userController.register)
 apiRouter.post("/api/user/login", controllers.api.v1.userController.login)
 
