@@ -15,7 +15,7 @@ apiRouter.post("/api/admin/register", uploadValidation, controllers.api.v1.userC
 
 // user action
 apiRouter.get("/api/user/current", controllers.api.v1.userController.whoIsLogin, controllers.api.v1.userController.currentUser)
-apiRouter.get("/api/user/update", uploadValidation, controllers.api.v1.userController.whoIsLogin, controllers.api.v1.userController.update)
+apiRouter.put("/api/user/update", uploadValidation, controllers.api.v1.userController.whoIsLogin, controllers.api.v1.userController.update)
 apiRouter.post("/api/user/register", uploadValidation, controllers.api.v1.userController.register)
 apiRouter.post("/api/user/login", controllers.api.v1.userController.login)
 

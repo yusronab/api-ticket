@@ -161,7 +161,7 @@ module.exports = {
 
     async update(req, res) {
         if (req.file == null) {
-            userService.update(req.params.id, req.body)
+            userService.update(req.user.id, req.body)
                 .then(() => {
                     res.status(200).json({ message: "Update successfully" })
                 })
@@ -197,7 +197,7 @@ module.exports = {
                     image: result.url
                 }
 
-                userService.update(req.params.id, body)
+                userService.update(req.user.id, body)
                     .then(() => {
                         res.status(200).json({ message: "Update successfully" })
                     })
@@ -209,5 +209,18 @@ module.exports = {
                     })
             })
         }
+    },
+
+    async delete(req, res) {
+        userService.update(req.user.id, { exist: false })
+            .then(() => {
+                res.status(204).end()
+            })
+            .catch((err) => {
+                res.status(422).json({
+                    status: "FAIL",
+                    errors: err.message
+                })
+            })
     }
 }
