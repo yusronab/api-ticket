@@ -4,6 +4,8 @@ const cloudinary = require("../../upload/cloudinary")
 
 const { User } = require("../../../models")
 
+const { Op } = require("sequelize")
+
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const salt = 10
@@ -63,7 +65,16 @@ module.exports = {
         const email = req.body.email.toLowerCase()
         const password = req.body.password
 
-        const user = await User.findOne({ where: { email } })
+        const user = await User.findOne({ where: {
+            [Op.and]: [
+                {
+                    email: email
+                },
+                {
+                    exist: true
+                }
+            ] 
+        } })
 
         if (!user) {
             res.status(404).json({ message: "User Not Found" })
@@ -105,6 +116,7 @@ module.exports = {
                 ...req.body,
                 email: email,
                 role: rolePicker,
+                exist: true,
                 password: encryptedPassword
             }
 
@@ -138,6 +150,7 @@ module.exports = {
                     ...req.body,
                     email: email,
                     role: rolePicker,
+                    exist: true,
                     password: encryptedPassword,
                     image: result.url
                 }
@@ -212,7 +225,14 @@ module.exports = {
     },
 
     async delete(req, res) {
-        userService.update(req.user.id, { exist: false })
+        const dateDeleted = new Date()
+
+        const body = {
+            exist: false,
+            deletedAt: dateDeleted
+        }
+        
+        userService.update(req.user.id, body)
             .then(() => {
                 res.status(204).end()
             })
