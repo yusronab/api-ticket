@@ -3,8 +3,8 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-     await queryInterface.addColumn('User', 'exist', { type: Sequelize.BOOLEAN });
-     await queryInterface.addColumn('User', 'deletedAt', { type: Sequelize.DATE });
+     await queryInterface.addColumn('Users', 'exist', { type: Sequelize.BOOLEAN });
+     await queryInterface.addColumn('Users', 'deletedAt', { type: Sequelize.DATE });
   },
 
   async down (queryInterface, Sequelize) {
@@ -14,7 +14,7 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.removeColumn('User', 'exist')
-    await queryInterface.removeColumn('User', 'deletedAt')
+    await queryInterface.removeColumn('Users', 'exist')
+    await queryInterface.removeColumn('Users', 'deletedAt')
   }
 };
