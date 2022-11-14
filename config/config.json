@@ -15,10 +15,13 @@
   },
   "production": {
     "use_env_variable": "DATABASE_URL",
-    "username": "PGUSER",
-    "password": "PGPASSWORD",
-    "database": "PGDATABASE",
-    "host": "PGHOST",
-    "dialect": "postgres"
+    "dialect": "postgress",
+    "protocol": "postgress",
+    "dialectOptions": {
+      "ssl" : {
+        "require" : true,
+        "rejectUnauthorized" : false
+      }
+    }
   }
 }
