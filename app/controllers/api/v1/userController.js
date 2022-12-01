@@ -65,16 +65,18 @@ module.exports = {
         const email = req.body.email.toLowerCase()
         const password = req.body.password
 
-        const user = await User.findOne({ where: {
-            [Op.and]: [
-                {
-                    email: email
-                },
-                {
-                    exist: true
-                }
-            ] 
-        } })
+        const user = await User.findOne({
+            where: {
+                [Op.and]: [
+                    {
+                        email: email
+                    },
+                    {
+                        isExist: true
+                    }
+                ]
+            }
+        })
 
         if (!user) {
             res.status(404).json({ message: "User Not Found" })
@@ -104,7 +106,7 @@ module.exports = {
 
         const rolePicker = typeof req.user === 'undefined' ? "member" : req.user.role === "superadmin" ? "admin" : "member"
 
-        const isEmailExists = await User.findOne({ where: { email } })
+        const isEmailExists = await User.findOne({ where: { email: email, isExist: true } })
 
         if (isEmailExists) {
             res.status(400).json({ message: "This email already exists" })
@@ -116,7 +118,8 @@ module.exports = {
                 ...req.body,
                 email: email,
                 role: rolePicker,
-                exist: true,
+                isExist: true,
+                isVerify: false,
                 password: encryptedPassword
             }
 
@@ -150,7 +153,8 @@ module.exports = {
                     ...req.body,
                     email: email,
                     role: rolePicker,
-                    exist: true,
+                    isExist: true,
+                    isVerify: false,
                     password: encryptedPassword,
                     image: result.url
                 }
@@ -228,10 +232,10 @@ module.exports = {
         const dateDeleted = new Date()
 
         const body = {
-            exist: false,
+            isExist: false,
             deletedAt: dateDeleted
         }
-        
+
         userService.update(req.user.id, body)
             .then(() => {
                 res.status(204).end()

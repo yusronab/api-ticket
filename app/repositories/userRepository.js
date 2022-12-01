@@ -18,6 +18,8 @@ module.exports = {
     },
 
     findAll() {
-        return User.findAll()
+        return User.findAll({ order: [
+            ['updatedAt', 'DESC']
+        ] })
     }
 }
