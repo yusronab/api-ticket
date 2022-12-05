@@ -7,7 +7,7 @@ module.exports = {
     await queryInterface.bulkInsert('Tickets', [
       {
         code: "DO22TO05AR05000",
-        flight: "Domesctic",
+        flight: "DOMESTIC",
         departure: "Bandar Udara Internasional Sultan Iskandar Muda, Banda Aceh",
         departureCode: "BTJ",
         destination: "Bandar Udara Sultan Aji Muhammad Sulaiman, Balikpapan",
@@ -23,7 +23,7 @@ module.exports = {
       },
       {
         code: "DO22TO11AR11001",
-        flight: "Domesctic",
+        flight: "DOMESTIC",
         departure: "Bandar Udara Pattimura, Ambon",
         departureCode: "AMQ",
         destination: "Bandar Udara Abdul Rachman Saleh, Malang",
@@ -39,7 +39,7 @@ module.exports = {
       },
       {
         code: "DO22TO13AR14002",
-        flight: "Domesctic",
+        flight: "DOMESTIC",
         departure: "Bandar Udara Internasional Adisumarmo, Solo",
         departureCode: "SOC",
         destination: "Bandar Udara Internasional Sentani, Jayapura",
@@ -55,7 +55,7 @@ module.exports = {
       },
       {
         code: "DO22TO13AR13003",
-        flight: "Domesctic",
+        flight: "DOMESTIC",
         departure: "Bandar Udara Internasional Minangkabau, Padang",
         departureCode: "PDG",
         destination: "Bandar Udara internasional Syamsudin Noor, Banjarmasin",
@@ -71,7 +71,7 @@ module.exports = {
       },
       {
         code: "DO22TO17AR17004",
-        flight: "Domesctic",
+        flight: "DOMESTIC",
         departure: "Bandar Udara Internasional Jenderal Ahmad Yani, Semarang",
         departureCode: "SRG",
         destination: "Bandar Udara Internasional Sultan Mahmud Badaruddin II, Palembang",
@@ -87,7 +87,7 @@ module.exports = {
       },
       {
         code: "DO22TO21AR21005",
-        flight: "Domesctic",
+        flight: "DOMESTIC",
         departure: "Bandar Udara Internasional Juanda, Siduarjo",
         departureCode: "SUB",
         destination: "Bandar Udara Internasional Sultan Hasanuddin, Makassar",
@@ -103,7 +103,7 @@ module.exports = {
       },
       {
         code: "DO22TO19AR19006",
-        flight: "Domesctic",
+        flight: "DOMESTIC",
         departure: "Bandar Udara Internasional Soekarno-Hatta, Tanggerang",
         departureCode: "CGK",
         destination: "Bandar Udara Internasional Ngurah Rai, Denpasar",
@@ -119,7 +119,7 @@ module.exports = {
       },
       {
         code: "DO22TO15AR15007",
-        flight: "Domesctic",
+        flight: "DOMESTIC",
         departure: "Bandar Udara Internasional Supadio, Pontianak",
         departureCode: "PNK",
         destination: "Bandar Udara Internasional Husein Sastranegara, Bandung",
@@ -135,7 +135,7 @@ module.exports = {
       },
       {
         code: "DO22TO14AR14008",
-        flight: "Domesctic",
+        flight: "DOMESTIC",
         departure: "Bandar Udara Internasional Hang Nadim, Batam",
         departureCode: "BTH",
         destination: "Bandar Udara Internasional Jenderal Ahmad Yani, Semarang",
@@ -151,7 +151,7 @@ module.exports = {
       },
       {
         code: "DO22TO30AR30009",
-        flight: "Domesctic",
+        flight: "DOMESTIC",
         departure: "Bandar Udara Internasional Adisutjipto, Daerah Istimewa Yogyakarta",
         departureCode: "JOG",
         destination: "Bandar Udara Halim Perdanakusuma, DKI Jakarta",
@@ -167,7 +167,7 @@ module.exports = {
       },
       {
         code: "IN22TO14AR15010",
-        flight: "International",
+        flight: "INTERNATIONAL",
         departure: "Bandar Udara Halim Perdanakusuma, DKI Jakarta",
         departureCode: "HLP",
         destination: "Bandara Internasional Kansai, Osaka",
@@ -183,7 +183,7 @@ module.exports = {
       },
       {
         code: "IN22TO15AR15011",
-        flight: "International",
+        flight: "INTERNATIONAL",
         departure: "Bandar Udara Internasional Jenderal Ahmad Yani, Semarang",
         departureCode: "SRG",
         destination: "Bandara Internasional Tokyo, Tokyo",
@@ -199,7 +199,7 @@ module.exports = {
       },
       {
         code: "IN22TO15AR15012",
-        flight: "International",
+        flight: "INTERNATIONAL",
         departure: "Bandar Udara Internasional Adisumarmo, Solo",
         departureCode: "SOC",
         destination: "Bandara Internasional Tokyo, Tokyo",
@@ -215,7 +215,7 @@ module.exports = {
       },
       {
         code: "IN22TO15AR15013",
-        flight: "International",
+        flight: "INTERNATIONAL",
         departure: "Bandar Udara Internasional Adisutjipto, Daerah Istimewa Yogyakarta",
         departureCode: "JOG",
         destination: "Singapore Changi Airport, Singapore",
@@ -231,7 +231,7 @@ module.exports = {
       },
       {
         code: "IN22TO15AR15014",
-        flight: "International",
+        flight: "INTERNATIONAL",
         departure: "Bandar Udara Internasional Soekarno-Hatta, Tanggerang",
         departureCode: "CGK",
         destination: "Sydney Kingsford Smith Airport, Sydney",
@@ -247,7 +247,7 @@ module.exports = {
       },
       {
         code: "IN22TO14AR14015",
-        flight: "International",
+        flight: "INTERNATIONAL",
         departure: "Bandar Udara Internasional Ngurah Rai, Denpasar",
         departureCode: "DPS",
         destination: "Melbourne Airport, Melbourne",
