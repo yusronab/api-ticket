@@ -22,6 +22,7 @@ apiRouter.post("/v1/user/login", controllers.api.v1.userController.login)
 
 apiRouter.post("/v2/user/register", controllers.api.v2.userController.register)
 apiRouter.post("/v2/user/login", controllers.api.v2.userController.login)
+apiRouter.post("/v2/user/login-google", controllers.api.v2.userController.googleLogin)
 apiRouter.get("/v2/user/register-verify/:token", controllers.api.v2.userController.verifyAccount)
 
 // user history transaction

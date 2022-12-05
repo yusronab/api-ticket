@@ -1,6 +1,9 @@
 const nodemailer = require("nodemailer")
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
+const { OAuth2Client } = require("google-auth-library")
+const client = new OAuth2Client("785137861913-jraaaegd6mhuunhiuntrpighacick6ea.apps.googleusercontent.com")
+
 const salt = 10
 
 const { User } = require("../../../models")
@@ -147,7 +150,7 @@ module.exports = {
         }
 
         const user = await User.findOne({
-            where: { email: email, isExist: true  }
+            where: { email: email, isExist: true }
         })
 
         if (!user) {
@@ -171,4 +174,38 @@ module.exports = {
 
         res.status(200).json({ token: token })
     },
+
+    async googleLogin(req, res) {
+        const { token } = req.body;
+
+        try {
+            const ticket = await client.verifyIdToken({
+                idToken: token,
+                audience: "785137861913-jraaaegd6mhuunhiuntrpighacick6ea.apps.googleusercontent.com"
+            })
+            const { email, name, picture } = ticket.getPayload()
+
+            let user = await User.findOne({ where: { email: email } });
+
+            if (!user) user = await User.create({
+                name: name,
+                email: email,
+                image: picture,
+                role: "member",
+                isExist: true,
+                isVerify: true,
+            });
+
+            const accessToken = createToken({
+                id: user.id,
+                code: user.code,
+                name: user.name,
+                email: user.email
+            });
+
+            res.status(201).json({ token: accessToken });
+        } catch (err) {
+            res.status(401).json({ error: { name: err.name, message: err.message } });
+        }
+    }
 }
