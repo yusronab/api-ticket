@@ -37,5 +37,13 @@ module.exports = {
 
     count() {
         return Ticket.count()
-    }
+    },
+
+    domesctic() {
+        return Ticket.findAll({ where: { flight: "DOMESTIC" } })
+    },
+
+    international() {
+        return Ticket.findAll({ where: { flight: "INTERNATIONAL" } })
+    },
 }

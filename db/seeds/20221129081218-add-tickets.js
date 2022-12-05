@@ -6,7 +6,8 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Tickets', [
       {
-        code: "TI000T03A03",
+        code: "DO22TO05AR05000",
+        flight: "Domesctic",
         departure: "Bandar Udara Internasional Sultan Iskandar Muda, Banda Aceh",
         departureCode: "BTJ",
         destination: "Bandar Udara Sultan Aji Muhammad Sulaiman, Balikpapan",
@@ -21,7 +22,8 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        code: "TI001T03A03",
+        code: "DO22TO11AR11001",
+        flight: "Domesctic",
         departure: "Bandar Udara Pattimura, Ambon",
         departureCode: "AMQ",
         destination: "Bandar Udara Abdul Rachman Saleh, Malang",
@@ -36,7 +38,8 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        code: "TI002T03A03",
+        code: "DO22TO13AR14002",
+        flight: "Domesctic",
         departure: "Bandar Udara Internasional Adisumarmo, Solo",
         departureCode: "SOC",
         destination: "Bandar Udara Internasional Sentani, Jayapura",
@@ -51,7 +54,8 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        code: "TI003T03A03",
+        code: "DO22TO13AR13003",
+        flight: "Domesctic",
         departure: "Bandar Udara Internasional Minangkabau, Padang",
         departureCode: "PDG",
         destination: "Bandar Udara internasional Syamsudin Noor, Banjarmasin",
@@ -66,7 +70,8 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        code: "TI004T03A03",
+        code: "DO22TO17AR17004",
+        flight: "Domesctic",
         departure: "Bandar Udara Internasional Jenderal Ahmad Yani, Semarang",
         departureCode: "SRG",
         destination: "Bandar Udara Internasional Sultan Mahmud Badaruddin II, Palembang",
@@ -81,7 +86,8 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        code: "TI005T03A03",
+        code: "DO22TO21AR21005",
+        flight: "Domesctic",
         departure: "Bandar Udara Internasional Juanda, Siduarjo",
         departureCode: "SUB",
         destination: "Bandar Udara Internasional Sultan Hasanuddin, Makassar",
@@ -96,7 +102,8 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        code: "TI006T03A03",
+        code: "DO22TO19AR19006",
+        flight: "Domesctic",
         departure: "Bandar Udara Internasional Soekarno-Hatta, Tanggerang",
         departureCode: "CGK",
         destination: "Bandar Udara Internasional Ngurah Rai, Denpasar",
@@ -111,7 +118,8 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        code: "TI007T03A03",
+        code: "DO22TO15AR15007",
+        flight: "Domesctic",
         departure: "Bandar Udara Internasional Supadio, Pontianak",
         departureCode: "PNK",
         destination: "Bandar Udara Internasional Husein Sastranegara, Bandung",
@@ -126,7 +134,8 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        code: "TI008T03A03",
+        code: "DO22TO14AR14008",
+        flight: "Domesctic",
         departure: "Bandar Udara Internasional Hang Nadim, Batam",
         departureCode: "BTH",
         destination: "Bandar Udara Internasional Jenderal Ahmad Yani, Semarang",
@@ -141,7 +150,8 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        code: "TI009T03A03",
+        code: "DO22TO30AR30009",
+        flight: "Domesctic",
         departure: "Bandar Udara Internasional Adisutjipto, Daerah Istimewa Yogyakarta",
         departureCode: "JOG",
         destination: "Bandar Udara Halim Perdanakusuma, DKI Jakarta",
@@ -151,6 +161,102 @@ module.exports = {
         takeOff: new Date("01/30/2022 12:00:00"),
         arrive: new Date("01/30/2022 13:15:00"),
         price: 1200000,
+        totalChair: 100,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        code: "IN22TO14AR15010",
+        flight: "International",
+        departure: "Bandar Udara Halim Perdanakusuma, DKI Jakarta",
+        departureCode: "HLP",
+        destination: "Bandara Internasional Kansai, Osaka",
+        destinationCode: "KIX",
+        type: "Adult",
+        class: "Business",
+        takeOff: new Date("01/14/2022 22:00:00"),
+        arrive: new Date("01/15/2022 00:15:00"),
+        price: 1950000,
+        totalChair: 100,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        code: "IN22TO15AR15011",
+        flight: "International",
+        departure: "Bandar Udara Internasional Jenderal Ahmad Yani, Semarang",
+        departureCode: "SRG",
+        destination: "Bandara Internasional Tokyo, Tokyo",
+        destinationCode: "HND",
+        type: "Adult",
+        class: "Economy",
+        takeOff: new Date("01/15/2022 06:30:00"),
+        arrive: new Date("01/15/2022 09:15:00"),
+        price: 2200000,
+        totalChair: 100,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        code: "IN22TO15AR15012",
+        flight: "International",
+        departure: "Bandar Udara Internasional Adisumarmo, Solo",
+        departureCode: "SOC",
+        destination: "Bandara Internasional Tokyo, Tokyo",
+        destinationCode: "HND",
+        type: "Adult",
+        class: "Economy",
+        takeOff: new Date("01/15/2022 06:30:00"),
+        arrive: new Date("01/15/2022 09:15:00"),
+        price: 2200000,
+        totalChair: 100,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        code: "IN22TO15AR15013",
+        flight: "International",
+        departure: "Bandar Udara Internasional Adisutjipto, Daerah Istimewa Yogyakarta",
+        departureCode: "JOG",
+        destination: "Singapore Changi Airport, Singapore",
+        destinationCode: "SIN",
+        type: "Adult",
+        class: "Business",
+        takeOff: new Date("01/13/2022 09:30:00"),
+        arrive: new Date("01/13/2022 10:15:00"),
+        price: 1950000,
+        totalChair: 100,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        code: "IN22TO15AR15014",
+        flight: "International",
+        departure: "Bandar Udara Internasional Soekarno-Hatta, Tanggerang",
+        departureCode: "CGK",
+        destination: "Sydney Kingsford Smith Airport, Sydney",
+        destinationCode: "SYD",
+        type: "Adult",
+        class: "Economy",
+        takeOff: new Date("01/15/2022 12:30:00"),
+        arrive: new Date("01/15/2022 13:15:00"),
+        price: 1750000,
+        totalChair: 100,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        code: "IN22TO14AR14015",
+        flight: "International",
+        departure: "Bandar Udara Internasional Ngurah Rai, Denpasar",
+        departureCode: "DPS",
+        destination: "Melbourne Airport, Melbourne",
+        destinationCode: "MEL",
+        type: "Adult",
+        class: "Economy",
+        takeOff: new Date("01/14/2022 06:30:00"),
+        arrive: new Date("01/14/2022 09:15:00"),
+        price: 2000000,
         totalChair: 100,
         createdAt: new Date(),
         updatedAt: new Date()

@@ -31,5 +31,13 @@ module.exports = {
 
     counting() {
         return ticketRepository.count()
+    },
+
+    ticketDom() {
+        return ticketRepository.domesctic()
+    },
+
+    ticketIntr() {
+        return ticketRepository.international()
     }
 }

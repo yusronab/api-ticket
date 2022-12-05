@@ -3,10 +3,10 @@ info:
   title: Garudanih API - OpenAPI 3.0
   version: 0.0.1
 servers:
-  - description: Local Server
+  - description: Production
+    url: https://api-ticket.up.railway.app/
+  - description: Development
     url: http://localhost:8000/
-  - description: Production Server
-    url: https://kungkingknag.com
 tags:
   - name: Users
     description: Contain every operation about User Resource
@@ -375,6 +375,30 @@ paths:
         "400":
           description: "FAIL"
       
+  /v1/ticket-doms:
+    get:
+      summary: Get List of domestic ticket in database
+      description: Menampilkan semua daftar tiket penerbangan domestik
+      tags:
+      - Tickets
+      responses:
+        "200":
+          $ref: "#/components/responses/GetTicketsRes"
+        "400":
+          description: "FAIL"
+          
+  /v1/ticket-intr:
+    get:
+      summary: Get List of international ticket in database
+      description: Menampilkan semua daftar tiket penerbangan intenasional
+      tags:
+      - Tickets
+      responses:
+        "200":
+          $ref: "#/components/responses/GetTicketsRes"
+        "400":
+          description: "FAIL"
+          
   /v1/ticket/{id}:
     get:
       security:
@@ -953,6 +977,8 @@ components:
                           type: integer
                         code:
                           type: string
+                        flight:
+                          type: string
                         departure:
                           type: string
                         destination:
@@ -977,7 +1003,8 @@ components:
                           type: string
                     example:
                     - id: 39
-                      code: "TI003T03A03"
+                      code: "DO22TO14AR14012"
+                      flight: "DOMESTIC"
                       departure: "Bandar Udara Internasional Minangkabau, Padang"
                       departureCode: "PDG"
                       destination: "Bandar Udara internasional Syamsudin Noor, Banjarmasin"
@@ -991,7 +1018,8 @@ components:
                       createdAt: "2022-01-13T02:22:00.000Z"
                       updatedAt: "2022-01-13T02:22:00.000Z"
                     - id: 40
-                      code: "TI003T03A03"
+                      code: "IN22TO14AR14012"
+                      flight: "INTERNATIONAL"
                       departure: "Bandar Udara Internasional Jenderal Ahmad Yani, Semarang"
                       departureCode: "SRG"
                       destination: "Bandar Udara Internasional Sultan Mahmud Badaruddin II, Palembang"

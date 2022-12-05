@@ -20,6 +20,10 @@ apiRouter.delete("/v1/user/delete", controllers.api.v1.userController.whoIsLogin
 apiRouter.post("/v1/user/register", uploadValidation, controllers.api.v1.userController.register)
 apiRouter.post("/v1/user/login", controllers.api.v1.userController.login)
 
+apiRouter.post("/v2/user/register", controllers.api.v2.userController.register)
+apiRouter.post("/v2/user/login", controllers.api.v2.userController.login)
+apiRouter.get("/v2/user/register-verify/:token", controllers.api.v2.userController.verifyAccount)
+
 // user history transaction
 apiRouter.get("/v1/user/history", controllers.api.v1.userController.whoIsLogin, controllers.api.v1.transController.history)
 // user notification
@@ -27,6 +31,8 @@ apiRouter.get("/v1/user/notify", controllers.api.v1.userController.whoIsLogin, c
 
 // ticket handle
 apiRouter.get("/v1/ticket", controllers.api.v1.ticketController.list)
+apiRouter.get("/v1/ticket-doms", controllers.api.v1.ticketController.listDoms)
+apiRouter.get("/v1/ticket-intr", controllers.api.v1.ticketController.listIntr)
 apiRouter.post("/v1/ticket", controllers.api.v1.ticketController.create)
 apiRouter.get("/v1/ticket/:id", controllers.api.v1.ticketController.get)
 apiRouter.put("/v1/ticket/:id", controllers.api.v1.ticketController.update)
