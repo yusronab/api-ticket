@@ -128,7 +128,10 @@ module.exports = {
 
             await User.update({ isVerify: true }, { where: { id } })
 
-            res.end(`<h3 style="color: green; text-align: center">Yeay... your account has been veryfied.</h3>`)
+            res.status(200).render('response', {
+                message: "Yeay... your account has been veryfied",
+                color: "#2F82FF"
+            })
         } catch (err) {
             res.status(400).json({ message: err.message })
         }

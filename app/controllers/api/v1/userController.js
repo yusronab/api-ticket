@@ -280,7 +280,7 @@ module.exports = {
                 return
             }
 
-            const url = `http://localhost:8010/reset-password/${token}`;
+            const url = `https://api-ticket.up.railway.app/reset-password/${token}`;
 
             transporter.sendMail({
                 from: '"GarudaNih Team" <yusron.arly@gmail.com>',
@@ -319,24 +319,31 @@ module.exports = {
 
         res.status(200).json({ message: `Check ${email} for reset password` })
     },
-    
-    async viewsReset(req, res) {
-        const token = req.params.token
-        const tokenPayload = jwt.verify(token, process.env.JWT_SIGNATURE_KEY || "Rahasia")
 
-        userService.get(tokenPayload.id)
-            .then((user) => {
-                res.status(200).render('reset-password', {
-                    status: "OK",
-                    data: user
+    async viewsReset(req, res) {
+        try {
+            const token = req.params.token
+            const tokenPayload = jwt.verify(token, process.env.JWT_SIGNATURE_KEY || "Rahasia")
+            
+            userService.get(tokenPayload.id)
+                .then((user) => {
+                    res.status(200).render('reset-password', {
+                        status: "OK",
+                        data: user
+                    })
                 })
-            })
-            .catch((err) => {
-                res.status(422).json({
-                    status: "FAIL",
-                    errors: err.message
+                .catch((err) => {
+                    res.status(422).json({
+                        status: "FAIL",
+                        errors: err.message
+                    })
                 })
+        } catch (err) {
+            res.status(401).json({
+                status: "UNAUTHORIZED",
+                errors: err.message
             })
+        }
     },
 
     async resetPassword(req, res) {
@@ -344,27 +351,36 @@ module.exports = {
         const password = req.body.password
 
         const user = await userService.get(id)
-        
+
         const encryptedPassword = await encyptedPassword(password)
 
         if (!user) {
-            res.status(400).json({ message: "User not found" })
+            res.status(401).render('response', {
+                message: "User not found",
+                color: "red"
+            })
             return
         }
-
+        
         if (password !== req.body.confirmPassword) {
-            res.status(400).json({ message: "Password doesn't match" })
+            res.status(400).render('response', { 
+                message: "Password doesn't match",
+                color: "red"
+            })
             return
         }
 
         userService.update(id, { password: encryptedPassword })
             .then(() => {
-                res.status(200).json({ message: "Reset password successfully" })
+                res.status(200).render('response', {
+                    message: "Reset password successfully",
+                    color: "#2F82FF"
+                })
             })
             .catch((err) => {
-                res.status(401).json({
-                    status: "FAIL",
-                    errors: err.message
+                res.status(401).render('response', {
+                    message: err.message,
+                    color: "red"
                 })
             })
     }
