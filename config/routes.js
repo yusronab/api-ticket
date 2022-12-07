@@ -20,6 +20,12 @@ apiRouter.delete("/v1/user/delete", controllers.api.v1.userController.whoIsLogin
 apiRouter.post("/v1/user/register", uploadValidation, controllers.api.v1.userController.register)
 apiRouter.post("/v1/user/login", controllers.api.v1.userController.login)
 
+apiRouter.post("/v1/user/forgot-password", controllers.api.v1.userController.forgorPassword)
+
+apiRouter.get("/reset-password/:token", controllers.api.v1.userController.viewsReset)
+apiRouter.put("/reset-password", controllers.api.v1.userController.resetPassword)
+
+// user action version 2.0
 apiRouter.post("/v2/user/register", controllers.api.v2.userController.register)
 apiRouter.post("/v2/user/login", controllers.api.v2.userController.login)
 apiRouter.post("/v2/user/login-google", controllers.api.v2.userController.googleLogin)
