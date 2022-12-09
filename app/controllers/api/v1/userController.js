@@ -74,10 +74,10 @@ module.exports = {
 
     async login(req, res) {
         const email = req.body.email ? req.body.email.toLowerCase() : ""
-        const password = req.body.password
+        const password = req.body.password ? req.body.password : ""
 
-        if (email === "") {
-            res.status(404).json({ message: "Email cannot empty" })
+        if (email === "" || password === "") {
+            res.status(404).json({ message: "Email or password cannot empty" })
             return
         }
 
@@ -118,12 +118,14 @@ module.exports = {
 
     async register(req, res) {
         const email = req.body.email ? req.body.email.toLowerCase() : ""
-        const encryptedPassword = await encyptedPassword(req.body.password)
+        const password = req.body.password ? req.body.password : ""
 
-        if (email === "") {
-            res.status(404).json({ message: "Email cannot empty" })
+        if (email === "" || password === "") {
+            res.status(404).json({ message: "Email or password cannot empty" })
             return
         }
+
+        const encryptedPassword = await encyptedPassword(password)
 
         const rolePicker = typeof req.user === 'undefined' ? "member" : req.user.role === "superadmin" ? "admin" : "member"
 

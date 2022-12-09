@@ -52,12 +52,14 @@ function createToken(payload) {
 module.exports = {
     async register(req, res) {
         const email = req.body.email ? req.body.email.toLowerCase() : ""
-        const encryptPassword = await encyptedPassword(req.body.password)
+        const password = req.body.password ? req.body.password : ""
 
-        if (email === "") {
-            res.status(404).json({ message: "Email cannot empty" })
+        if (email === "" || password === "") {
+            res.status(404).json({ message: "Email or password cannot empty" })
             return
         }
+
+        const encryptPassword = await encyptedPassword(password)
 
         const isEmailExists = await User.findOne({ where: { email }, isExist: true })
 
@@ -146,10 +148,10 @@ module.exports = {
 
     async login(req, res) {
         const email = req.body.email ? req.body.email.toLowerCase() : ""
-        const password = req.body.password
+        const password = req.body.password ? req.body.password : ""
 
-        if (email === "") {
-            res.status(404).json({ message: "Email cannot empty" })
+        if (email === "" || password === "") {
+            res.status(404).json({ message: "Email or password cannot empty" })
             return
         }
 
