@@ -554,7 +554,7 @@ paths:
         '400':
           description: Fail
           
-  /v1/trans/{transId}:
+  /v1/trans/paid/{transId}:
     put:
       tags:
         - transaction
