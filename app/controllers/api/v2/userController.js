@@ -51,8 +51,13 @@ function createToken(payload) {
 
 module.exports = {
     async register(req, res) {
-        const email = req.body.email.toLowerCase()
+        const email = req.body.email ? req.body.email.toLowerCase() : ""
         const encryptPassword = await encyptedPassword(req.body.password)
+
+        if (email === "") {
+            res.status(404).json({ message: "Email cannot empty" })
+            return
+        }
 
         const isEmailExists = await User.findOne({ where: { email }, isExist: true })
 
