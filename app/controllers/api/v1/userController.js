@@ -73,8 +73,13 @@ module.exports = {
     },
 
     async login(req, res) {
-        const email = req.body.email.toLowerCase()
+        const email = req.body.email ? req.body.email.toLowerCase() : ""
         const password = req.body.password
+
+        if (email === "") {
+            res.status(404).json({ message: "Email cannot empty" })
+            return
+        }
 
         const user = await User.findOne({
             where: {
