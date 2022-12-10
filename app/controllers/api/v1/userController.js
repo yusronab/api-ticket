@@ -59,6 +59,7 @@ module.exports = {
             const tokenPayload = jwt.verify(token, process.env.JWT_SIGNATURE_KEY || "Rahasia")
 
             req.user = await User.findByPk(tokenPayload.id)
+            console.log("whoami =>", req.user)
             next()
         } catch (err) {
             res.status(401).json({
