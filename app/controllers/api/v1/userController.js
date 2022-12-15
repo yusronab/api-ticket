@@ -60,7 +60,7 @@ module.exports = {
             const tokenPayload = jwt.verify(token, process.env.JWT_SIGNATURE_KEY || "Rahasia")
 
             req.user = await User.findByPk(tokenPayload.id)
-            console.log("whoami =>", req.user)
+            
             next()
         } catch (err) {
             res.status(401).json({
@@ -97,14 +97,14 @@ module.exports = {
         })
 
         if (!user) {
-            res.status(404).json({ message: "User Not Found" })
+            res.status(404).json({ message: "User not found" })
             return
         }
 
         const isPasswordCorrect = await checkPassword(user.password, password)
 
         if (!isPasswordCorrect) {
-            res.status(404).json({ message: "Password Wrong" })
+            res.status(404).json({ message: "Password wrong" })
             return
         }
 

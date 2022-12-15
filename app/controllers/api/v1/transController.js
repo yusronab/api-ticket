@@ -9,12 +9,17 @@ module.exports = {
         const isAvailable = await transService.chairAvailable(ticketId, req.body.numChair)
 
         if (isAvailable) {
-            res.status(401).json({ message: "this seet are available" })
+            res.status(401).json({ message: "This seet are available" })
             return
         }
 
         const ticket = await ticketService.get(ticketId)
 
+        if (!ticket) {
+            res.status(401).json({ message: "Invalid ticket" })
+            return
+        }
+        
         const ticketCode = ticket.dataValues.code
 
         const userId = req.user.id
