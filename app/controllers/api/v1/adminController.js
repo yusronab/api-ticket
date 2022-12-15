@@ -57,13 +57,15 @@ module.exports = {
 
         const userImage = user.dataValues.image
 
-        const imageID = userImage.split("/").pop().split(".")[0]
+        if (userImage) {
+            const imageID = userImage.split("/").pop().split(".")[0]
 
-        const deleteImage = await cloudinary.uploader.destroy(`user/${imageID}`)
+            const deleteImage = await cloudinary.uploader.destroy(`user/${imageID}`)
 
-        if (!deleteImage) {
-            res.status(422).json({ message: "Error when deleting file" })
-            return
+            if (!deleteImage) {
+                res.status(422).json({ message: "Error when deleting file" })
+                return
+            }
         }
 
         userService.delete(req.params.id)
