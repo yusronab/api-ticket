@@ -242,7 +242,7 @@ paths:
           $ref: "#/components/responses/DataUser"
         "400":
           description: Fail
-
+  /v1/admin/update/{id}:
     put:
       security:
         - bearerAuth: []
@@ -273,7 +273,7 @@ paths:
           $ref: "#/components/responses/DataUser"
         "400":
           description: Fail
-
+  /v1/admin/delete/{id}:
     delete:
       security:
         - bearerAuth: []

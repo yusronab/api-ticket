@@ -11,7 +11,7 @@ apiRouter.get("/v1/admin/detail/:id", controllers.api.v1.userController.whoIsLog
 // superadmin action
 apiRouter.put("/v1/admin/update/:id", uploadValidation, controllers.api.v1.userController.whoIsLogin, controllers.api.v1.adminController.update)
 apiRouter.delete("/v1/admin/delete/:id", controllers.api.v1.userController.whoIsLogin, controllers.api.v1.adminController.destroy)
-apiRouter.post("/v1/admin/register", uploadValidation, controllers.api.v1.userController.whoIsLogin, uploadValidation, controllers.api.v1.userController.register)
+apiRouter.post("/v1/admin/register", uploadValidation, controllers.api.v1.userController.whoIsLogin, controllers.api.v1.userController.register)
 
 // user action
 apiRouter.get("/v1/user/current", controllers.api.v1.userController.whoIsLogin, controllers.api.v1.userController.currentUser)
