@@ -55,6 +55,11 @@ module.exports = {
 
         const user = await userService.get(req.params.id)
 
+        if (!user) {
+            res.status(422).json({ message: "Invalid user" })
+            return
+        }
+
         const userImage = user.dataValues.image
 
         if (userImage) {
